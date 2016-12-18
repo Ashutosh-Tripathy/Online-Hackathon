@@ -1,0 +1,91 @@
+import collections
+import operator
+
+def ForEachTestCaseGetInput():
+    global listStr1,listStr2,negativeDiffObject,positiveDiffObject
+    numberOfTestCases=int(input())
+    for i in range(numberOfTestCases):
+        negativeDiffObject,positiveDiffObject={},{}
+        listStr1=list(input())
+        listStr2=list(input())
+        CreateCharDiffObject(listStr1,listStr2)
+        ChangeStringToGetMinMove(positiveDiffObject)
+        print(GetMinMove(listStr1,listStr2))
+
+def CreateCharDiffObject(str1,str2):
+    for i in range(len(str1)):
+        diff=ord(str1[i])-ord(str2[i])
+        AddInDiffObject(diff,i,True)
+            
+def AddInDiffObject(diff,index,addInPostitiveObject):
+    global positiveDiffObject,negativeDiffObject
+    positiveDiffObject[index]=diff
+
+def ChangeStringToGetMinMove(positiveDiffObject):
+    listStr1,listStr2
+    global minMove
+    minMove=0
+    print("ChangeStringToGetMinMove")
+    list1Keys=sorted(positiveDiffObject.items(), key=lambda x:x[1])
+    print("All items of sorted dict")
+    print(list1Keys)
+    list1KeysLength=len(list1Keys)-1
+    for i in range(len(list1Keys)):
+        if(list1Keys[list1KeysLength-i][1]>list1Keys[i][1]):
+            temp=listStr1[list1Keys[list1KeysLength-i][0]]  
+            listStr1[list1Keys[list1KeysLength-i][0]]=listStr1[list1Keys[i][0]]
+            listStr1[list1Keys[i][0]]=temp
+            minMove+=1
+        else:
+            break
+        print(listStr1)
+    print(minMove)    
+    
+                               
+def GetMinMove(listStr1,listStr2):
+    global minMove
+    for i in range(len(listStr1)):
+        minMove+=abs(ord(listStr1[i])-ord(listStr2[i]))
+    return minMove        
+                   
+ForEachTestCaseGetInput()
+
+    
+# d = {2:3, 1:89, 4:5, 3:0}
+
+# od = collections.OrderedDict(sorted(d.items()))
+
+
+
+# def CheckAndAddIfLastTwoDigitIsValidDecoding(incryptedInput):
+#     global numberOfPossibleDecoding,stackIncryptedInput
+#     lastTwoDigit=incryptedInput%100 
+#     if(lastTwoDigit>9 and lastTwoDigit<27):
+#         numberOfPossibleDecoding+=1
+#         newIncryptedInputint=int((incryptedInput/100))
+#         if(newIncryptedInputint!=0):
+#             stackIncryptedInput.append(newIncryptedInputint)           
+#         # GetPossibleDecoding(int(incryptedInput/100))
+
+
+# while(True):
+#     global numberOfPossibleDecoding,stackIncryptedInput
+#     numberOfPossibleDecoding=1
+#     stackIncryptedInput=[]
+#     incryptedInput=int(input())   
+#     if(incryptedInput==0):
+#         break    
+#     while(incryptedInput>0):
+#         # print("incryptedInput: "+str(incryptedInput))
+#         CheckAndAddIfLastTwoDigitIsValidDecoding(incryptedInput)
+#         incryptedInput =int(incryptedInput/10)
+#         # print("stackIncryptedInput: ")
+#         # print(stackIncryptedInput)
+#         if(incryptedInput==0):
+#             # print("len(stackIncryptedInput" +str(len(stackIncryptedInput)))
+#             if(len(stackIncryptedInput)!=0):
+#                 incryptedInput=stackIncryptedInput.pop()
+                
+#             else:
+#                 break            
+#     print(numberOfPossibleDecoding)
