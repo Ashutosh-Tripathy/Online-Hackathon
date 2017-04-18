@@ -26,7 +26,7 @@ if(rotatingDirection=="r"):
 
 #Start Merge sort (Recursive)
 def Merge(arr,startIndex,endIndex):
-    print("-------------------------------------------");    
+    print("-------------------------------------------");
     print (arr);
     middle=startIndex+((endIndex-startIndex)/2);
     firstArray=arr[startIndex:middle+1];
@@ -34,7 +34,7 @@ def Merge(arr,startIndex,endIndex):
     firstArrIndex=len(firstArray)-1;
     secondArrIndex=len(secondArray)-1;
     # endIndex=len(arr)-1;
-    
+
     while(endIndex>=startIndex):
         if(firstArrIndex<0):
             arr[endIndex]=secondArray[secondArrIndex];
@@ -42,7 +42,7 @@ def Merge(arr,startIndex,endIndex):
         elif(secondArrIndex<0):
             arr[endIndex]=firstArray[firstArrIndex];
             firstArrIndex-=1;
-        elif(firstArray[firstArrIndex]>secondArray[secondArrIndex]):   
+        elif(firstArray[firstArrIndex]>secondArray[secondArrIndex]):
             arr[endIndex]=firstArray[firstArrIndex];
             firstArrIndex-=1;
         else:
@@ -51,8 +51,8 @@ def Merge(arr,startIndex,endIndex):
             endIndex-=1;
             print (arr);
             print("-------------------------------------------");
-            
-            
+
+
             def MergeSort(arr, startIndex,endIndex):
                 if(endIndex<=startIndex):
                     return;
@@ -61,11 +61,11 @@ def Merge(arr,startIndex,endIndex):
                             temp=arr[startIndex];
                             arr[startIndex]=arr[endIndex];
                             arr[endIndex]=temp;
-                        else: 
+                        else:
                             middle=startIndex+((endIndex-startIndex)/2);
                             MergeSort(arr,startIndex,middle);
                             MergeSort(arr,middle+1,endIndex);
-                            Merge(arr,startIndex,endIndex);        
+                            Merge(arr,startIndex,endIndex);
 
 
 
@@ -81,7 +81,7 @@ MergeSort(arr,0,len(arr)-1);
 #Start Merge sort (Itrative)
 
 def Merge(arr,startIndex,endIndex):
-    print("-------------------------------------------");    
+    print("-------------------------------------------");
     print (arr);
     middle=startIndex+((endIndex-startIndex)/2);
     firstArray=arr[startIndex:middle+1];
@@ -95,7 +95,7 @@ def Merge(arr,startIndex,endIndex):
         elif(secondArrIndex<0):
             arr[endIndex]=firstArray[firstArrIndex];
             firstArrIndex-=1;
-        elif(firstArray[firstArrIndex]>secondArray[secondArrIndex]):   
+        elif(firstArray[firstArrIndex]>secondArray[secondArrIndex]):
             arr[endIndex]=firstArray[firstArrIndex];
             firstArrIndex-=1;
         else:
@@ -104,21 +104,21 @@ def Merge(arr,startIndex,endIndex):
             endIndex-=1;
             print (arr);
             print("-------------------------------------------");
-            
-            def MergeSort(arr, startIndex,endIndex):
-                group=2;
-                startIndex=0;
-                while(startIndex+group-1<len(arr)):
-                    mergeStartIndex=startIndex;
-                    mergeEndIndex=mergeStartIndex+group-1;
-                    print(""+str(mergeStartIndex)+":"+str(mergeEndIndex));
-                    while(mergeStartIndex<len(arr)):
-                        print(""+str(mergeStartIndex)+":"+str(mergeEndIndex));
-                        Merge(arr,mergeStartIndex,mergeEndIndex);
-                        mergeStartIndex=mergeEndIndex+1;
-                        mergeEndIndex= mergeStartIndex+group-1 if mergeStartIndex+group-1<len(arr) else len(arr)-1;
-                        group*=2;
-                        
+
+def MergeSort(arr, startIndex,endIndex):
+    group=2;
+    startIndex=0;
+    while(startIndex+group-1<len(arr)):
+        mergeStartIndex=startIndex;
+        mergeEndIndex=mergeStartIndex+group-1;
+        print(""+str(mergeStartIndex)+":"+str(mergeEndIndex));
+        while(mergeStartIndex<len(arr)):
+            print(""+str(mergeStartIndex)+":"+str(mergeEndIndex));
+            Merge(arr,mergeStartIndex,mergeEndIndex);
+            mergeStartIndex=mergeEndIndex+1;
+            mergeEndIndex= mergeStartIndex+group-1 if mergeStartIndex+group-1<len(arr) else len(arr)-1;
+            group*=2;
+
 # Merge
 arr=[55,23,11,8,9,83,8,25,49,2,4,1,6,9,0,7];
 print (arr);
