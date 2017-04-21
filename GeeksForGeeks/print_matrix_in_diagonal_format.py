@@ -15,6 +15,7 @@ def print_diagonal_form(matrix):
     i, j = 0, 0
     is_up = True
     print_diagonal(i, j, is_up)
+
     is_up = not is_up if is_up else is_up
 
 print_diagonal_form([[1,2,3],[4,5,6]])
