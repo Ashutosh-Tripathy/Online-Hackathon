@@ -1,5 +1,5 @@
 from collections import defaultdict
-from heapq import *
+# from heapq import *
 
 def dijkstra(edges, f, t):
     g = defaultdict(list)
