@@ -2,16 +2,12 @@ from __future__ import division
 
 
 def solution(A):
-    # write your code in Python 2.7
-    sum = 0
-    carry = 0
-    for i in range(len(A)):
-        num = 17 * A[i] + carry
-        sum = sum + (num % 10)
-        carry = num // 10
-        i += 1
-    sum += carry
-    return sum
+    num = int("".join(str(i) for i in reversed(A))) * 17
+    result = 0
+    while num > 0:
+        result += num % 10
+        num //= 10
+    return result
 
 
-solution([3, 5, 1])
+print(solution([3, 5, 1]))
