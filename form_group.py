@@ -6,15 +6,16 @@ def solution(A):
         if A[i] > A[i - 1]:
             group.append((A[i - 1], temp))
             temp = A[i]
-    
+    group.append((A[-1], temp))
+
     group.sort()
+    print(group)
     for j in range(1, len(group)):
         item = group[j]
-        prev_item = group[j - 1]
-        if item[0] < prev_item[0] and prev_item[1] < item[1]:
+        prev = group[j - 1]
+        if prev[1] > item[0]:
             return 1
-
     return len(group)
 
 
-solution([1, 5, 4, 9, 8, 7, 12, 13, 14])
+print(solution([1, 5, 4, 9, 8, 7, 14, 13, 15, 20, 25, 21]))
